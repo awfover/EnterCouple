@@ -6,18 +6,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <meta name="renderer" content="webkit">
         <title>{{ options.name_male }} 和 {{ options.name_female }}温暖的家</title>
-        <link rel="icon" href="static/img/favicon.png">
-        <link rel="stylesheet" type="text/css" href="static/css/font.css">
-        <link rel="stylesheet" type="text/css" href="static/css/animations.css">
-        <link rel="stylesheet" type="text/css" href="static/css/main.css">
-        <link rel="stylesheet" type="text/css" href="static/css/theme_grass.css">
-        <script src="static/js/common.js"></script>
-        <script src="static/js/main.js"></script>
-        <script src="static/js/photo_upload.js"></script>
+        <link rel="icon" href="/static/img/favicon.png">
+        <link rel="stylesheet" type="text/css" href="/static/css/font.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/animations.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/theme_grass.css">
+        <script src="/static/js/common.js"></script>
+        <script src="/static/js/main.js"></script>
+        <script src="/static/js/photo_upload.js"></script>
     </head>
     {% if user.is_authenticated %}
         <body>
-            <img class="hook mobile-hide" src="static/img/longHook.png">
+            <img class="hook mobile-hide" src="/static/img/longHook.png">
     {% else %}
         <body class="stranger">
     {% endif %}
@@ -270,12 +270,12 @@
                             {% endfor %}
                         </div>
                         <div class="timeaxis-background mobile-hide">
-                            <img class="noblank" src="static/img/fill_grass.png">
-                            <img class="blank" src="static/img/fill_blank_grass.png">
+                            <img class="noblank" src="/static/img/fill_grass.png">
+                            <img class="blank" src="/static/img/fill_blank_grass.png">
                         </div>
                         <!-- <div class="timeaxis-background default mobile-hide">
-                            <img class="noblank" src="static/img/fill.png">
-                            <img class="blank" src="static/img/fill_blank.png">
+                            <img class="noblank" src="/static/img/fill.png">
+                            <img class="blank" src="/static/img/fill_blank.png">
                         </div> -->
                         <div class="timeaxis-scroll hide">
                             <div class="scroll-bar"></div>
