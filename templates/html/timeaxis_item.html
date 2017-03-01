@@ -1,0 +1,40 @@
+<div class="timeaxis-item {{ item.msg_type }} clearfix" value="{{ item.date|date:"ymd" }}" sid="{{ item.id }}">
+    <div class="item-border">
+        <div class="item-wrapper clearfix">
+            <div class="item-main">
+                {% if item.author == options.name_male %}
+                    <img class="item-avatar" src="{{ options.avatar_male }}">
+                {% else %}
+                    <img class="item-avatar" src="{{ options.avatar_female }}">
+                {% endif %}
+                <div class="item-detail">
+                    <p class="detail-username">{{ item.author }}</p>
+                    {% autoescape off %}
+                        {{ item.content }}
+                    {% endautoescape %}
+                    <div class="detail-footer">
+                        <span class="detail-time">{{ item.date|date:"Y-m-d H:i" }}</span>
+                        {% if user.is_authenticated %}
+                            <span class="detail-comment">评论</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if user.username == item.author %}
+                    <div class="item-remove item" sid="{{ item.id }}"></div>
+                {% endif %}
+            </div>
+            {% if item.msg_type == 'photo' %}
+                <div class="detail-photo">{{ item.img }}</div>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <div class="item-comment hide" sid="{{ item.id }}">
+                    <div class="comment-new">
+                        <img class="comment-item-avatar" src="{{ user_avatar }}">
+                        <input class="item-input" type="text">
+                        <div class="item-submit">评论</div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

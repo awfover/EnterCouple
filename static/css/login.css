@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.frame {
+    min-width: 368px;
+    min-height: 417px;
+    height: 100%;
+    text-align: center;
+    background: url(../img/grass_index.png) no-repeat scroll center center;
+    background-size: cover;
+    position: relative;
+}
+
+.login {
+    left: 0;
+    top: 0;
+    width: 368px;
+    height: 417px;
+    padding: 30px 80px;
+    background: rgba(54, 71, 85, 0);
+    border-radius: 10px;
+    vertical-align: middle;
+    display: inline-block;
+    position: absolute;
+}
+
+@media (min-width: 368px) {
+    .login {
+        left: 50%;
+        margin-left: -184px;
+    }
+}
+
+@media (min-height: 417px) {
+    .login {
+        top: 50%;
+        margin-top: -208.5px;
+    }
+}
+
+.svg {
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.svg * {
+    stroke: transparent;
+    fill: transparent;
+}
+
+.login .logo {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    margin: 20px auto 20px auto;
+    background: url(../img/circle_grass.png) no-repeat scroll center center;
+    background-size: 100% 100%;
+    border-radius: 80px;
+    text-align: center;
+    display: block;
+    position: relative;
+    transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    opacity: 0;
+    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+}
+
+/*.login .logo:hover {
+    box-shadow: 0px 0px 10px rgba(196, 183, 180, 0.62);
+    -webkit-box-shadow: 0px 0px 10px rgba(196, 183, 180, 0.62);
+    -moz-box-shadow: 0px 0px 10px rgba(196, 183, 180, 0.62);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+}*/
+
+.login .logo:active {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+}
+
+.login .logo embed {
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.login .zone-name {
+    margin-bottom: 40px;
+    color: #fff;
+    line-height: 100%;
+    font-size: 20px;
+    font-family: Harrington Regular;
+    display: block;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.8, 0.9);
+    -webkit-transform: scale(0.8, 0.9);
+    -moz-transform: scale(0.8, 0.9);
+}
+
+.zone-name svg {
+    left: 39px;
+}
+
+.login input {
+    width: 208px;
+    height: 35px;
+    padding: 5px 2px 5px 45px;
+    background: transparent;
+    color: #fff;
+    line-height: 100%;
+    outline: 0;
+    font-size: 18px;
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif;
+    border: 0;
+    //display: block;
+    position: relative;
+}
+
+.login input::-webkit-input-placeholder {
+    font-size: 18px;
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.login input::-moz-placeholder {
+    font-size: 18px;
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.login input:-moz-placeholder {
+    font-size: 18px;
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.icon {
+    position: relative;
+}
+
+.username, .password {
+    width: 100%;
+    height: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 17.5px;
+    opacity: 0;
+    transform: scale(0.8, 0.9);
+    -webkit-transform: scale(0.8, 0.9);
+    -moz-transform: scale(0.8, 0.9);
+}
+
+.password {
+    margin-top: 10px;
+    position: relative;
+}
+
+.icon::after {
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+}
+
+.icon.profile::after {
+    left: 15px;
+    top: 4px;
+    content: "\e08a";
+    color: rgba(255, 255, 255, 0.5);
+    font: 20px 'ElegantIcons';
+    position: absolute;
+}
+
+.icon.lock::after {
+    left: 15px;
+    top: 4px;
+    content: "\e06c";
+    color: rgba(255, 255, 255, 0.5);
+    font: 20px 'ElegantIcons';
+    position: absolute;
+}
+
+.icon.active::after {
+    color: rgb(255, 255, 255);
+}
+
+.login-message {
+    height: 18px;
+    line-height: 18px;
+    color: #fff;
+    font-size: 14px;
+    margin: 10px 0px;
+    //visibility: hidden;
+    opacity: 0;
+}
+
+.login-message::before {
+    margin-right: 5px;
+    color: #fff;
+    font: 14px 'ElegantIcons';
+    content: "p";
+}
+
+.login-btn {
+    width: 100%;
+    height: 35px;
+    border: 0;
+    border-radius: 17.5px;
+    background: #364755;
+    color: #fff;
+    font-size: 20px;
+    font-family: Harrington Regular;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    outline-width: 0;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    opacity: 0;
+    transform: scale(0.8, 0.9);
+    -webkit-transform: scale(0.8, 0.9);
+    -moz-transform: scale(0.8, 0.9);
+}
+
+.login-btn:active {
+    transform: scale(0.90, 0.9);
+}

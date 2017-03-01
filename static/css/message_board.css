@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+button {
+    font-size: 20px;
+}
+
+.support3d .frame {
+    height: 100%;
+    position: relative;
+    perspective: 1200px;
+}
+
+.support3d .box {
+    width: 800px;
+    height: 800px;
+    left: 50%;
+    top: 50%;
+    margin-left: -400px;
+    margin-top: -400px;
+    position: absolute;
+    //transition: 0.1s all ease;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    transform: translateZ(-400px);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.support3d .box div {
+    width: 800px;
+    height: 800px;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    backface-visibility: hidden;
+    position: absolute;
+}
+
+.support3d .box .side-0 {
+    background: red;
+    transform: translateZ(400px);
+}
+
+.support3d .box .side-1 {
+    background: blue;
+    transform: translateX(-400px) rotateY(-90deg);
+}
+
+.support3d .box .side-2 {
+    background: green;
+    transform: translateZ(-400px) rotateY(-180deg);
+}
+
+.support3d .box .side-3 {
+    background: black;
+    transform: translateX(400px) rotateY(90deg);
+}
+
+.support3d .box .side-4 {
+    background: pink;
+    transform: translateY(400px) rotateX(-90deg);
+}
+
+.support3d .box .side-5 {
+    background: gray;
+    transform: translateY(-400px) rotateX(90deg);
+}

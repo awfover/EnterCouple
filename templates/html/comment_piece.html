@@ -1,0 +1,14 @@
+
+    {% if item.author == options.name_male %}
+        <img class="comment-item-avatar" src="{{ options.avatar_male }}">
+    {% else %}
+        <img class="comment-item-avatar" src="{{ options.avatar_female }}">
+    {% endif %}
+    <div class="piece-detail">
+        <span class="piece-detail-user">{{ item.author }}</span>
+        <span class="piece-detail-time">{{ item.date|date:"Y-m-d H:i" }}</span>
+        <p class="piece-detail-content">{{ item.content }}</p>
+    </div>
+    {% if item.author == user.username %}
+        <div class="item-remove" sid="{{ item.id }}"></div>
+    {% endif %}

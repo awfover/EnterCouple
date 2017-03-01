@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <meta name="renderer" content="webkit">
+        <title>{{ options.name_male }} 和 {{ options.name_female }}温暖的家</title>
+        <link rel="icon" href="../static/img/favicon.png">
+        <link rel="stylesheet" type="text/css" href="../static/css/font.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/animations.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/theme_grass.css">
+        <script src="../static/js/common.js"></script>
+        <script src="../static/js/main.js"></script>
+        <script src="../static/js/photo_upload.js"></script>
+    </head>
+    {% if user.is_authenticated %}
+        <body>
+            <img class="hook mobile-hide" src="../static/img/longHook.png">
+    {% else %}
+        <body class="stranger">
+    {% endif %}
+        {% if user.username == options.name_male %}
+            {% if options.theme_male == 'default' %}
+                <div class="frame">
+            {% else %}
+                <div class="frame theme-grass">
+            {% endif %}
+        {% endif %}
+        {% if user.username == options.name_female %}
+            {% if options.theme_female == 'default' %}
+                <div class="frame">
+            {% else %}
+                <div class="frame theme-grass">
+            {% endif %}
+        {% endif %}
+        {% if not user.is_authenticated %}
+            <div class="frame theme-grass">
+        {% endif %}
+            <div class="background"></div>
+            <div class="content">
+                <div class="loading mobile-hide">
+                    {% if user.is_authenticated %}
+                        <a class="user-avatar" href="#">
+                            <img src="{{ user_avatar }}" style="">
+                        </a>
+                        <p class="user-name">{{ user.username }}</p>
+                    {% else %}
+                        <div class="user-row">
+                            <a class="user-avatar" href="#">
+                                <img src="{{ options.avatar_female }}">
+                            </a>
+                            <a class="user-avatar" href="#">
+                                <img src="{{ options.avatar_male }}">
+                            </a>
+                        </div>
+                        <div class="user-row">
+                            <span class="user-name">{{ options.name_female }}</span>
+                            <span class="user-heart"></span>
+                            <span class="user-name">{{ options.name_male }}</span>
+                        </div>
+                    {% endif %}
+                    <div class="loading-item">
+                        <span class="loading-item-point"></span>
+                        <span class="loading-item-point"></span>
+                        <span class="loading-item-point"></span>
+                        <span class="loading-item-point"></span>
+                        <span class="loading-item-point"></span>
+                    </div>
+                </div>
+                <div class="side mobile-hide">
+                    <a class="logo" href="/login/"></a>
+                    <div class="filter">
+                        <div class="filter-item active" value="message">留言</div>
+                        <div class="filter-item active" value="diary">日志</div>
+                        <div class="filter-item active" value="photo">照片</div>
+                    </div>
+                    <div class="module">
+                        <div class="module-item">
+                            <!-- {% if user.is_authenticated %}
+                                <div class="module-item-option"></div>
+                            {% endif %} -->
+                            {% with options.calc_memory as time %}
+                                {% if user.is_authenticated %}
+                                    <p class="module-item-type">距 <span class="module-item-year">{{ time.0 }}</span>周年<input class="module-item-description" value={{ options.name_mem }} last={{ options.name_mem }}> 还有</p>
+                                {% else %}
+                                    <p class="module-item-type">距 <span class="module-item-year">{{ time.0 }}</span>周年<input class="module-item-description" value={{ options.name_mem }} last={{ options.name_mem }} readonly="readonly"> 还有</p>
+                                {% endif %}
+                                <p class="module-item-time"><span class="module-item-digit">{{ time.1 }}</span>天</p>
+                            {% endwith %}
+                            {% if user.is_authenticated %}
+                                <input class="module-item-date" value="{{ options.date_mem|date:"Y-m-d" }}" last="{{ options.date_mem|date:"Y-m-d" }}">
+                            {% else %}
+                                <input class="module-item-date" value="{{ options.date_mem|date:"Y-m-d" }}" last="{{ options.date_mem|date:"Y-m-d" }}" readonly="readonly">
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="user">
+                        {% if user.is_authenticated %}
+                            <a class="user-avatar" href="#">
+                                <img src="{{ user_avatar }}">
+                            </a>
+                            <span class="user-name">{{ user.username }}</span>
+                        {% else %}
+                            <div class="user-row">
+                                <a class="user-avatar" href="#">
+                                    <img src="{{ options.avatar_female }}">
+                                </a>
+                                <a class="user-avatar" href="#">
+                                    <img src="{{ options.avatar_male }}">
+                                </a>
+                            </div>
+                            <div class="user-row">
+                                <span class="user-name">{{ options.name_female }}</span>
+                                <span class="user-heart"></span>
+                                <span class="user-name">{{ options.name_male }}</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="new mobile-hide">
+                        <div class="new-item" value="message">
+                            <span class="new-item-ico message"></span>
+                            <span class="new-item-text">新留言</span>
+                        </div>
+                        <div class="new-item" value="diary">
+                            <span class="new-item-ico diary"></span>
+                            <span class="new-item-text">新日志</span>
+                        </div>
+                        <div class="new-item" value="photo">
+                            <span class="new-item-ico photo"></span>
+                            <span class="new-item-text">新照片</span>
+                        </div>
+                        <div class="new-item option">
+                            <span class="new-item-ico option"></span>
+                            <span class="new-item-text">设置</span>
+                            <div class="option-list">
+                                <div class="option-list-item permission">
+                                    <span>陌生人</span>
+                                    {% if options.permission %}
+                                        <span class="list-item-check allow"></span>
+                                    {% else %}
+                                        <span class="list-item-check"></span>
+                                    {% endif %}
+                                </div>
+                                <div class="option-list-item avatar">
+                                    <span>上传头像</span>
+                                    <input class="list-item-input" type="file">
+                                </div>
+                                <div class="option-list-item logout">
+                                    <span>注销</span>
+                                </div>
+                                <!-- <div class="option-list-item username">
+                                    <input class="list-item-username" value="{{ user.username }}">
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="new-post message scroll-area">
+                            <div class="triangle"></div>
+                            <div class="post-send icon-pen"></div>
+                            <div class="post-scroll">
+                                <textarea class="post-text scroll" placeholder="输入留言..."></textarea>
+                                <div class="post-scroll-bar"></div>
+                            </div>
+                        </div>
+                        <div class="new-post diary scroll-area">
+                            <div class="triangle"></div>
+                            <div class="post-send icon-text"></div>
+                            <div class="post-tool clearfix">
+                                <div class="post-tool-item bold">B</div>
+                                <div class="post-tool-item itaric">I</div>
+                                <div class="post-tool-item underline">U</div>
+                                <div class="post-tool-item size">字号</div>
+                            </div>
+                            <div class="post-title">
+                                <div class="post-title-icon"></div>
+                                <input class="post-title-input" placeholder="输入标题">
+                            </div>
+                            <div class="post-scroll scroll">
+                                <textarea class="post-text"></textarea>
+                                <div class="post-scroll-bar"></div>
+                            </div>
+                        </div>
+                        <div class="new-post photo scroll-area">
+                            <!-- <div class="triangle"></div>
+                            <div class="post-send icon-cloud"></div>
+                            <div class="post-title"><div class="post-title-icon"></div>上传图片</div>
+                            <div class="post-scroll">
+                                <div class="post-list scroll">
+                                    <div class="post-list-add"></div>
+                                </div>
+                                <div class="post-scroll-bar"></div>
+                            </div> -->
+                            <input class="post-input-hide" type="file" accept="image/png, image/gif, image/jpeg">
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="timeaxis mobile-hide">
+                        <div class="timeaxis-point top"></div>
+                        <div class="timeaxis-start"></div>
+                    </div>
+                    <div class="timeaxis-post">
+                        <div class="timeaxis-hover"></div>
+                        <div class="timeaxis-wrapper">
+                            <div class="timeaxis-daystart"></div>
+                            {% for item in msgs %}
+                                {% if item.msg_type == 'comment' %}
+                                    {% if user.is_authenticated %}
+                                        <div class="comment-piece" parent="{{ item.comment_id }}">
+                                            {% if item.author == options.name_male %}
+                                                <img class="comment-item-avatar" src="{{ options.avatar_male }}">
+                                            {% else %}
+                                                <img class="comment-item-avatar" src="{{ options.avatar_female }}">
+                                            {% endif %}
+                                            <div class="piece-detail">
+                                                <span class="piece-detail-user">{{ item.author }}</span>
+                                                <span class="piece-detail-time">{{ item.date|date:"Y-m-d H:i" }}</span>
+                                                <p class="piece-detail-content">{{ item.content }}</p>
+                                            </div>
+                                            {% if item.author == user.username %}
+                                                <div class="item-remove" sid="{{ item.id }}"></div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                {% else %}
+                                    <div class="timeaxis-item {{ item.msg_type }} clearfix" value="{{ item.date|date:"Ymd" }}" sid="{{ item.id }}">
+                                        <div class="item-border">
+                                            <div class="item-wrapper clearfix">
+                                                <div class="item-main">
+                                                    {% if item.author == options.name_male %}
+                                                        <img class="item-avatar" src="{{ options.avatar_male }}">
+                                                    {% else %}
+                                                        <img class="item-avatar" src="{{ options.avatar_female }}">
+                                                    {% endif %}
+                                                    <div class="item-detail">
+                                                        <p class="detail-username">{{ item.author }}</p>
+                                                        {% autoescape off %}
+                                                        {{ item.content }}
+                                                        {% endautoescape %}
+                                                        <div class="detail-footer">
+                                                            <span class="detail-time">{{ item.date|date:"Y-m-d H:i" }}</span>
+                                                            {% if user.is_authenticated %}
+                                                                <span class="detail-comment">评论</span>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    {% if user.username == item.author %}
+                                                        <div class="item-remove item" sid="{{ item.id }}"></div>
+                                                    {% endif %}
+                                                </div>
+                                                {% if item.msg_type == 'photo' %}
+                                                    <div class="detail-photo">{{ item.img }}</div>
+                                                {% endif %}
+                                                {% if user.is_authenticated %}
+                                                    <div class="item-comment hide" sid="{{ item.id }}">
+                                                        <div class="comment-new">
+                                                            <img class="comment-item-avatar" src="{{ user_avatar }}">
+                                                            <input class="item-input" type="text">
+                                                            <div class="item-submit">评论</div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="timeaxis-background mobile-hide">
+                            <img class="noblank" src="../static/img/fill_grass.png">
+                            <img class="blank" src="../static/img/fill_blank_grass.png">
+                        </div>
+                        <!-- <div class="timeaxis-background default mobile-hide">
+                            <img class="noblank" src="../static/img/fill.png">
+                            <img class="blank" src="../static/img/fill_blank.png">
+                        </div> -->
+                        <div class="timeaxis-scroll hide">
+                            <div class="scroll-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer-wrapper">
+                    <div class="footer-timeaxis"></div>
+                    <div class="footer-row">
+                        <div class="footer-timeaxispoint">start</div>
+                        <span class="footer-text">This is where we started.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
